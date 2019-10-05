@@ -39,32 +39,36 @@ class ASTGeneration(MCVisitor):
 
     # Visit a parse tree produced by MCParser#many_variables.
     def visitMany_variables(self, ctx:MCParser.Many_variablesContext):
-        return self.visitChildren(ctx)
+        return [self.visit(x) for x in ctx.variable()]
 
 
     # Visit a parse tree produced by MCParser#variable.
     def visitVariable(self, ctx:MCParser.VariableContext):
-        return self.visitChildren(ctx)
-
+        return Id(ctx.ID().getText()) if ctx.ID() else self.visit(ctx.array())
 
     # Visit a parse tree produced by MCParser#function_decl.
     def visitFunction_decl(self, ctx:MCParser.Function_declContext):
-        return self.visitChildren(ctx)
+        return FuncDecl(Id(ctx.ID().getText()),self.visit(ctx.parameter_list()),self.visit(ctx.func_type()),self.visit(ctx.block_statement()))
 
 
     # Visit a parse tree produced by MCParser#func_type.
     def visitFunc_type(self, ctx:MCParser.Func_typeContext):
-        return self.visitChildren(ctx)
+        if ctx.primitive_type():
+            return self.visit(ctx.primitive_type())
+        elif ctx.VOIDTYPE():
+            return VoidType()
+        else:
+            return self.visit(ctx.output_array_pointer_type())
 
 
     # Visit a parse tree produced by MCParser#parameter_list.
     def visitParameter_list(self, ctx:MCParser.Parameter_listContext):
-        return self.visitChildren(ctx)
+        return [self.visit(x) for x in ctx.parameter_decl()]
 
 
     # Visit a parse tree produced by MCParser#parameter_decl.
     def visitParameter_decl(self, ctx:MCParser.Parameter_declContext):
-        return self.visitChildren(ctx)
+        return 
 
 
     # Visit a parse tree produced by MCParser#var_stmt_list.
