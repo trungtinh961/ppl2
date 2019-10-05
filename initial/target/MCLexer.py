@@ -289,7 +289,6 @@ class MCLexer(Lexer):
 
     def emit(self):
         tk = self.type
-
         if tk == self.UNCLOSE_STRING:       
             result = super().emit();
             raise UncloseString(result.text);

@@ -1,8 +1,3 @@
-/**
- * Student name:    Nguyễn Trung Tính
- * Student ID:      1713521
- */
-
 grammar MC;
 
 @lexer::header {
@@ -12,7 +7,6 @@ from lexererr import *
 @lexer::members {
 def emit(self):
     tk = self.type
-
     if tk == self.UNCLOSE_STRING:       
         result = super().emit();
         raise UncloseString(result.text);
@@ -29,6 +23,7 @@ def emit(self):
 options{
 	language=Python3;
 }
+
 
                 /************
                 *   LEXER   *
