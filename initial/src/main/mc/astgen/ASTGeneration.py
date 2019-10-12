@@ -68,37 +68,37 @@ class ASTGeneration(MCVisitor):
 
     # Visit a parse tree produced by MCParser#parameter_decl.
     def visitParameter_decl(self, ctx:MCParser.Parameter_declContext):
-        return 
+        return (self.visit(ctx.primitive_type()) + Id(ctx.ID().getText())) if ctx.ID() else self.visit(ctx.input_array_pointer_type())
 
 
     # Visit a parse tree produced by MCParser#var_stmt_list.
     def visitVar_stmt_list(self, ctx:MCParser.Var_stmt_listContext):
-        return self.visitChildren(ctx)
+        return [self.visit(x) for x in ctx.var_stmt()]
 
 
     # Visit a parse tree produced by MCParser#var_stmt.
     def visitVar_stmt(self, ctx:MCParser.Var_stmtContext):
-        return self.visitChildren(ctx)
+        return self.visit(ctx.variable_decl()) if ctx.variable_decl() else self.visit(ctx.statement())
 
 
     # Visit a parse tree produced by MCParser#array.
     def visitArray(self, ctx:MCParser.ArrayContext):
-        return self.visitChildren(ctx)
+        return Id(ctx.ID().getText()) + IntLiteral(ctx.INTLIT())
 
 
     # Visit a parse tree produced by MCParser#array_pointer_type.
     def visitArray_pointer_type(self, ctx:MCParser.Array_pointer_typeContext):
-        return self.visitChildren(ctx)
+        return self.visit(ctx.input_array_pointer_type()) if ctx.input_array_pointer_type() else self.visit(ctx.output_array_pointer_type())
 
 
     # Visit a parse tree produced by MCParser#input_array_pointer_type.
     def visitInput_array_pointer_type(self, ctx:MCParser.Input_array_pointer_typeContext):
-        return self.visitChildren(ctx)
+        return self.visit(ctx.primitive_type()) + Id(ctx.ID().getText())
 
 
     # Visit a parse tree produced by MCParser#output_array_pointer_type.
     def visitOutput_array_pointer_type(self, ctx:MCParser.Output_array_pointer_typeContext):
-        return self.visitChildren(ctx)
+        return self.visit(ctx.primitive_type())
 
 
     # Visit a parse tree produced by MCParser#expr.
