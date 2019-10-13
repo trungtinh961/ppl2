@@ -103,72 +103,126 @@ class ASTGeneration(MCVisitor):
 
     # Visit a parse tree produced by MCParser#expr.
     def visitExpr(self, ctx:MCParser.ExprContext):
-        return self.visitChildren(ctx)
+        return BinaryOp(ctx.ASSIGN().getText(),self.visit(ctx.expr1()),self.visit(ctx.expr())) if ctx.getChildCount() == 3 else self.visit(ctx.expr1())
 
 
     # Visit a parse tree produced by MCParser#expr1.
     def visitExpr1(self, ctx:MCParser.Expr1Context):
-        return self.visitChildren(ctx)
+        return BinaryOp(ctx.OR().getText(),self.visit(ctx.expr1()),self.visit(ctx.expr2())) if ctx.getChildCount() == 3 else self.visit(ctx.expr2())
 
 
     # Visit a parse tree produced by MCParser#expr2.
     def visitExpr2(self, ctx:MCParser.Expr2Context):
-        return self.visitChildren(ctx)
+        return BinaryOp(ctx.AND().getText(),self.visit(ctx.expr2()),self.visit(ctx.expr3())) if ctx.getChildCount() == 3 else self.visit(ctx.expr3())
 
 
     # Visit a parse tree produced by MCParser#expr3.
     def visitExpr3(self, ctx:MCParser.Expr3Context):
-        return self.visitChildren(ctx)
+        if ctx.getChildCount() == 3:
+            if ctx.EQ():
+                return BinaryOp(ctx.EQ().getText(),self.visit(ctx.expr4()),self.visit(ctx.expr4()))
+            else:
+                return BinaryOp(ctx.NEQ().getText(),self.visit(ctx.expr4()),self.visit(ctx.expr4()))
+        else:
+            return self.visit(ctx.expr4())
 
 
     # Visit a parse tree produced by MCParser#expr4.
     def visitExpr4(self, ctx:MCParser.Expr4Context):
-        return self.visitChildren(ctx)
+        if ctx.getChildCount() == 3:
+            if ctx.LESS():
+                return BinaryOp(ctx.LESS().getText(),self.visit(ctx.expr5()),self.visit(ctx.expr5()))
+            elif ctx.LEQ():
+                return BinaryOp(ctx.LEQ().getText(),self.visit(ctx.expr5()),self.visit(ctx.expr5()))
+            elif ctx.GRATER():
+                return BinaryOp(ctx.GRATER().getText(),self.visit(ctx.expr5()),self.visit(ctx.expr5()))
+            elif ctx.GEQ():
+                return BinaryOp(ctx.GEQ().getText(),self.visit(ctx.expr5()),self.visit(ctx.expr5()))
+        else:
+            return self.visit(ctx.expr5())
 
 
     # Visit a parse tree produced by MCParser#expr5.
     def visitExpr5(self, ctx:MCParser.Expr5Context):
-        return self.visitChildren(ctx)
+        if ctx.getChildCount() == 3:
+            if ctx.ADD():
+                return BinaryOp(ctx.ADD().getText(),self.visit(ctx.expr5()),self.visit(ctx.expr6()))
+            else:
+                return BinaryOp(ctx.SUB().getText(),self.visit(ctx.expr5()),self.visit(ctx.expr6()))
+        else:
+            return self.visit(ctx.expr6())
 
 
     # Visit a parse tree produced by MCParser#expr6.
     def visitExpr6(self, ctx:MCParser.Expr6Context):
-        return self.visitChildren(ctx)
+        if ctx.getChildCount() == 3:
+            if ctx.DIV():
+                return BinaryOp(ctx.EQ().getText(),self.visit(ctx.expr6()),self.visit(ctx.expr7()))
+            elif ctx.MUL():
+                return BinaryOp(ctx.MUL().getText(),self.visit(ctx.expr6()),self.visit(ctx.expr7()))
+            else:
+                return BinaryOp(ctx.MOD().getText(),self.visit(ctx.expr6()),self.visit(ctx.expr7()))
+        else:
+            return self.visit(ctx.expr7())
 
 
     # Visit a parse tree produced by MCParser#expr7.
     def visitExpr7(self, ctx:MCParser.Expr7Context):
-        return self.visitChildren(ctx)
+        if ctx.getChildCount() == 2:
+            if ctx.SUB():
+                return UnaryOp(ctx.SUB().getText(),self.visit(ctx.expr7()))
+            else:
+                return UnaryOp(ctx.NOT().getText(),self.visit(ctx.expr7()))
+        else:
+            return self.visit(ctx.expr8())
 
 
     # Visit a parse tree produced by MCParser#expr8.
     def visitExpr8(self, ctx:MCParser.Expr8Context):
-        return self.visitChildren(ctx)
+        if ctx.getChildCount() == 4:
+            return ArrayCell(self.visit(ctx.expr9()),self.visit(ctx.expr()))
+        else:
+            return self.visit(ctx.expr9())
 
 
     # Visit a parse tree produced by MCParser#expr9.
     def visitExpr9(self, ctx:MCParser.Expr9Context):
-        return self.visitChildren(ctx)
+        if ctx.getChildCount() == 3:
+            return self.visit(ctx.expr())
+        else:
+            return self.visit(ctx.operands())
 
 
     # Visit a parse tree produced by MCParser#operands.
     def visitOperands(self, ctx:MCParser.OperandsContext):
-        return self.visitChildren(ctx)
+        if ctx.literal():
+            return self.visit(ctx.literal())
+        elif ctx.ID():
+            return Id(ctx.ID().getText())
+        else:
+            return self.visit(ctx.func_call())
 
 
     # Visit a parse tree produced by MCParser#literal.
     def visitLiteral(self, ctx:MCParser.LiteralContext):
-        return self.visitChildren(ctx)
+        if ctx.INTLIT():
+            return IntLiteral(ctx.INTLIT())
+        elif ctx.FLOATLIT():
+            return FloatLiteral(ctx.FLOATLIT())
+        elif ctx.STRINGLIT():
+            return StringLiteral(ctx.STRINGLIT())
+        elif ctx.BOOLEANLIT():
+            return BooleanLiteral(ctx.BOOLEANLIT())
 
 
     # Visit a parse tree produced by MCParser#func_call.
     def visitFunc_call(self, ctx:MCParser.Func_callContext):
-        return self.visitChildren(ctx)
+        return CallExpr(Id(ctx.ID().getText()),self.visit(ctx.exprlist()))
 
 
     # Visit a parse tree produced by MCParser#exprlist.
     def visitExprlist(self, ctx:MCParser.ExprlistContext):
-        return self.visitChildren(ctx)
+        return [self.visit(x) for x in ctx.expr()]
 
 
     # Visit a parse tree produced by MCParser#statement.
