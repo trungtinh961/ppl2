@@ -12,7 +12,7 @@ class ASTGeneration(MCVisitor):
 
     # Visit a parse tree produced by MCParser#manydecls.
     def visitManydecls(self, ctx:MCParser.ManydeclsContext):
-        return [self.visit(x) for x in ctx.decl()]
+        return [i for x in ctx.decl() for i in self.visit(x)]
 
 
     # Visit a parse tree produced by MCParser#decl.
@@ -22,7 +22,24 @@ class ASTGeneration(MCVisitor):
 
     # Visit a parse tree produced by MCParser#variable_decl.
     def visitVariable_decl(self, ctx:MCParser.Variable_declContext):
-        return VarDecl(self.visit(ctx.many_variables()),self.visit(ctx.primitive_type()))
+        primitiveType = self.visit(ctx.primitive_type())
+        manyVar = self.visit(ctx.many_variables())
+        return [VarDecl(var,primitiveType) if len(var)==1 else VarDecl(var[0],ArrayType(var[1],primitiveType)) for var in manyVar]
+       
+
+    # Visit a parse tree produced by MCParser#many_variables.
+    def visitMany_variables(self, ctx:MCParser.Many_variablesContext):
+        return [self.visit(x) for x in ctx.variable()]
+
+
+    # Visit a parse tree produced by MCParser#variable.
+    def visitVariable(self, ctx:MCParser.VariableContext):
+        return ctx.ID().getText() if ctx.ID() else self.visit(ctx.array())
+
+    
+    # Visit a parse tree produced by MCParser#array.
+    def visitArray(self, ctx:MCParser.ArrayContext):
+        return [ctx.ID().getText(), int(ctx.INTLIT().getText())]
 
 
     # Visit a parse tree produced by MCParser#primitive_type.
@@ -37,18 +54,9 @@ class ASTGeneration(MCVisitor):
             return StringType()
 
 
-    # Visit a parse tree produced by MCParser#many_variables.
-    def visitMany_variables(self, ctx:MCParser.Many_variablesContext):
-        return [self.visit(x) for x in ctx.variable()]
-
-
-    # Visit a parse tree produced by MCParser#variable.
-    def visitVariable(self, ctx:MCParser.VariableContext):
-        return Id(ctx.ID().getText()) if ctx.ID() else self.visit(ctx.array())
-
     # Visit a parse tree produced by MCParser#function_decl.
     def visitFunction_decl(self, ctx:MCParser.Function_declContext):
-        return FuncDecl(Id(ctx.ID().getText()),self.visit(ctx.parameter_list()),self.visit(ctx.func_type()),self.visit(ctx.block_statement()))
+        return [FuncDecl(Id(ctx.ID().getText()),self.visit(ctx.parameter_list()),self.visit(ctx.func_type()),self.visit(ctx.block_statement()))]
 
 
     # Visit a parse tree produced by MCParser#func_type.
@@ -81,11 +89,6 @@ class ASTGeneration(MCVisitor):
         return self.visit(ctx.variable_decl()) if ctx.variable_decl() else self.visit(ctx.statement())
 
 
-    # Visit a parse tree produced by MCParser#array.
-    def visitArray(self, ctx:MCParser.ArrayContext):
-        return Id(ctx.ID().getText()) + IntLiteral(ctx.INTLIT())
-
-
     # Visit a parse tree produced by MCParser#array_pointer_type.
     def visitArray_pointer_type(self, ctx:MCParser.Array_pointer_typeContext):
         return self.visit(ctx.input_array_pointer_type()) if ctx.input_array_pointer_type() else self.visit(ctx.output_array_pointer_type())
@@ -93,12 +96,12 @@ class ASTGeneration(MCVisitor):
 
     # Visit a parse tree produced by MCParser#input_array_pointer_type.
     def visitInput_array_pointer_type(self, ctx:MCParser.Input_array_pointer_typeContext):
-        return self.visit(ctx.primitive_type()) + Id(ctx.ID().getText())
+        return ArrayPointerType(ctx.primitive_type()) + Id(ctx.ID().getText())
 
 
     # Visit a parse tree produced by MCParser#output_array_pointer_type.
     def visitOutput_array_pointer_type(self, ctx:MCParser.Output_array_pointer_typeContext):
-        return self.visit(ctx.primitive_type())
+        return ArrayPointerType(ctx.primitive_type())
 
 
     # Visit a parse tree produced by MCParser#expr.
@@ -227,44 +230,44 @@ class ASTGeneration(MCVisitor):
 
     # Visit a parse tree produced by MCParser#statement.
     def visitStatement(self, ctx:MCParser.StatementContext):
-        return self.visitChildren(ctx)
+        return self.visit(ctx.getChild(0))
 
 
     # Visit a parse tree produced by MCParser#if_stmt.
     def visitIf_stmt(self, ctx:MCParser.If_stmtContext):
-        return self.visitChildren(ctx)
+        return If(self.visit(ctx.expr()),self.visit(ctx.statement())) if ctx.getChildCount() == 5 else If(self.visit(ctx.expr()),self.visit(ctx.statement(0)),self.visit(ctx.statement(1)))
 
 
     # Visit a parse tree produced by MCParser#dowhile_stmt.
     def visitDowhile_stmt(self, ctx:MCParser.Dowhile_stmtContext):
-        return self.visitChildren(ctx)
+        return Dowhile([self.visit(x) for x in ctx.statement()],self.visit(ctx.expr()))
 
 
     # Visit a parse tree produced by MCParser#for_stmt.
     def visitFor_stmt(self, ctx:MCParser.For_stmtContext):
-        return self.visitChildren(ctx)
+        return For(self.visit(ctx.expr(0)),self.visit(ctx.expr(1)),self.visit(ctx.expr(2)),self.visit(ctx.statement()))
 
 
     # Visit a parse tree produced by MCParser#break_stmt.
     def visitBreak_stmt(self, ctx:MCParser.Break_stmtContext):
-        return self.visitChildren(ctx)
+        return Break()
 
 
     # Visit a parse tree produced by MCParser#continue_stmt.
     def visitContinue_stmt(self, ctx:MCParser.Continue_stmtContext):
-        return self.visitChildren(ctx)
+        return Continue()
 
 
     # Visit a parse tree produced by MCParser#return_stmt.
     def visitReturn_stmt(self, ctx:MCParser.Return_stmtContext):
-        return self.visitChildren(ctx)
+        return Return(self.visit(ctx.expr())) if ctx.expr() else Return()
 
 
     # Visit a parse tree produced by MCParser#expr_stmt.
     def visitExpr_stmt(self, ctx:MCParser.Expr_stmtContext):
-        return self.visitChildren(ctx)
+        return self.visit(ctx.expr())
 
 
     # Visit a parse tree produced by MCParser#block_statement.
     def visitBlock_statement(self, ctx:MCParser.Block_statementContext):
-        return self.visitChildren(ctx)
+        return Block(self.visit(ctx.var_stmt_list()))

@@ -24,13 +24,13 @@ class MCVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MCParser#variable_decl.
-    def visitVariable_decl(self, ctx:MCParser.Variable_declContext):
+    # Visit a parse tree produced by MCParser#primitive_type.
+    def visitPrimitive_type(self, ctx:MCParser.Primitive_typeContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by MCParser#primitive_type.
-    def visitPrimitive_type(self, ctx:MCParser.Primitive_typeContext):
+    # Visit a parse tree produced by MCParser#variable_decl.
+    def visitVariable_decl(self, ctx:MCParser.Variable_declContext):
         return self.visitChildren(ctx)
 
 
@@ -41,6 +41,11 @@ class MCVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by MCParser#variable.
     def visitVariable(self, ctx:MCParser.VariableContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by MCParser#array.
+    def visitArray(self, ctx:MCParser.ArrayContext):
         return self.visitChildren(ctx)
 
 
@@ -71,11 +76,6 @@ class MCVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by MCParser#var_stmt.
     def visitVar_stmt(self, ctx:MCParser.Var_stmtContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by MCParser#array.
-    def visitArray(self, ctx:MCParser.ArrayContext):
         return self.visitChildren(ctx)
 
 

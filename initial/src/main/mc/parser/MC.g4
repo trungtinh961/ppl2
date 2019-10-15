@@ -132,12 +132,13 @@ ERROR_CHAR          : .;
 
 
 program             : manydecls EOF;
-manydecls           : decl (decl)* ;
+manydecls           : decl+;
 decl                : variable_decl | function_decl ;
-variable_decl       : primitive_type many_variables SEMI ;
 primitive_type      : INTTYPE | FLOATTYPE | BOOLEANTYPE | STRINGTYPE ;
+variable_decl       : primitive_type many_variables SEMI ;
 many_variables      : variable (CM variable)* ;
 variable            : ID | array ;
+array               : ID LSB INTLIT RSB;
 
 function_decl       : func_type ID LP parameter_list RP block_statement ;
 func_type           : primitive_type | VOIDTYPE | output_array_pointer_type ;
@@ -146,7 +147,6 @@ parameter_decl      : primitive_type ID | input_array_pointer_type ;
 var_stmt_list       : (var_stmt var_stmt*) ? ;
 var_stmt            : variable_decl | statement ;
 
-array                       : ID LSB INTLIT RSB;
 array_pointer_type          : input_array_pointer_type | output_array_pointer_type;
 input_array_pointer_type    : primitive_type ID LSB RSB;
 output_array_pointer_type   : primitive_type LSB RSB;
