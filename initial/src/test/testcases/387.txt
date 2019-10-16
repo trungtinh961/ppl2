@@ -1,24 +1,7 @@
-int main()
-        {
-            int low, high, i, flag;
-            printf("Enter two numbers(intervals): ");
-            scanf(low, high);
-            printf(low, high);
-            do
-            {
-                flag = 0;
-                for(i = 2; i <= low/2; i=i+1)
-                {
-                    if(low % i == 0)
-                        {
-                            flag = 1;
-                            break;
-                        }
-                }
-                 if (flag == 0)
-                    printf(low);
-                low=low+1;
+
+            int main(){
+                rate=rate/(12*100); /*one month interest*/
+                time=time*12; /*one month period*/
+                emi= (principal*rate*pow(1+rate,time))/(pow(1+rate,time)-1);
             }
-            while (low < high);
-            return 0;
-            }
+        

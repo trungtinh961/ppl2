@@ -1,4 +1,5 @@
-int main(){
-            boolean a;
-            return !a;
-        }
+
+            int main(){
+                (a==b)==c;
+            }
+        

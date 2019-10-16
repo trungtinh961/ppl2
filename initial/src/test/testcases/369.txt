@@ -1,4 +1,5 @@
-int main(){
-            str = "string\\";
-            return length(str);
+
+            int main(){
+                a = 0.33e-3;
             }
+        

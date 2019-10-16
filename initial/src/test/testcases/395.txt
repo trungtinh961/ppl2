@@ -1,15 +1,12 @@
-int main()
-        {
-            int dividend, divisor, quotient, remainder;
-            printf("Enter dividend: ");
-            scanf(dividend);
-            printf("Enter divisor: ");
-            scanf(divisor);
-            // Computes quotient
-            quotient = dividend / divisor;
-            // Computes remainder
-            remainder = dividend % divisor;
-            printf("Quotient = ", quotient);
-            printf("Remainder = ", remainder);
-            return 0;
-        }
+
+            void main() {
+                if (((1))) do {
+                    do do do a + 3; 9 * (10 + 4)[2*foo()];
+                    while (!-3.2*1000); while false; while "1231313131\n\f\r";
+                } while true;
+            }
+            
+            void nothing(){
+            show((show()*10-2.E20),3); 
+            }
+        

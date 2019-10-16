@@ -1,13 +1,5 @@
-int main()
-        {
-            int n, i, sum;
-    
-            printf("Enter a positive integer: ");
-            scanf(n);
-            for(i=1; i <= n; i=i+1)
-            {
-                sum = sum+i;
+
+            int main(){
+                (a[(a[(a[(a)])])]);
             }
-            printf("Sum = ",sum);
-            return 0;
-        }
+        

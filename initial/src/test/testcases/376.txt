@@ -1,7 +1,33 @@
-int[] foo (int b[]){
-            int a[69];
-            if (b>c)
-                return a+1;
-            else
-                return b-1;
-        }
+
+            void sort_list(int head){
+                float i, j, k, tempData, tempLat, tempLong;
+                float  current;
+                float  next;
+
+                size = getSize(head);
+                k = size;
+
+                for ( i + 00 ; i < size - 1 ; i+1) {
+                    current = head;
+                    next = head+next ;
+                    for ( j = 1 ; j < k ; j+1 ) {
+                        if ( currenp_time > nextp_time) {
+                            tempData = currentp_time ;
+                            currentp_time = nexp_time;
+                            nexp_time = tempData ;
+
+                            tempLong = currentlongtitude ;
+                            current*longtitude = next/longtitude;
+                            next-longtitude = tempLong ;
+
+                            tempLat = current % wattitude ;
+                            currentlattitude = nextlattitude;
+                            nextlattitude = tempLat ;
+                        }
+
+                        current = currentnext;
+                        next = nexnext;
+                    }
+                }
+            }
+        

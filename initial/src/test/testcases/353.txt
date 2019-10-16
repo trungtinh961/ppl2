@@ -1,5 +1,14 @@
-int main(){
-            if (a>b) 
-                c=a; 
-            else c=b; 
-        }
+
+            int main() {
+                string s1[100];
+                int i;
+                i=0;
+                    
+                do {
+                    i=i+1;
+                } while(s1[i] != null);
+                
+                printf("Do dai cua chuoi '%s' la: %d", s1, i);
+                return 0;
+            }
+        

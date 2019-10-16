@@ -1,2 +1,15 @@
-int main(){
-        float array[2];}
+
+            int main(){
+                {
+                    int a[1],c,d;
+                    if (a<b) a=a+1;
+                    if (a>b) a; else b;
+                    do ("hello worlds"); while (c!=5);
+                    for (i = 10; i > 0; i = i - 1) continue;
+                    {}
+                    return;
+                    break;
+                    boolean d[4],_;
+                }
+            }
+        

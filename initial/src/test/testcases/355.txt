@@ -1,6 +1,27 @@
-int main(){
-            for (i=0;i<10;i=i+1) 
-                {
-                    putInt(1);
+
+            int main() {
+                int array[10];
+                int loop, largest, second;
+
+                if(array[0] > array[1]) {
+                    largest = array[0];
+                    second  = array[1];
+                }else {
+                    largest = array[1];
+                    second  = array[0];
                 }
-        }
+
+                printf("Chuong trinh tim phan tu lon nhat va lon thu hai cua mang:\n\n"); 
+                for(loop = 2; loop < 10; loop+1) {
+                    if( largest < array[loop] ) {
+                        second = largest;
+                        largest = array[loop];
+                    }else if( second < array[loop] ) {
+                        second =  array[loop];
+                    }
+                }
+                printf("Phan tu lon nhat: %d \n Phan tu lon thu hai: %d \n", largest, second);   
+                return 0;
+            }
+
+        

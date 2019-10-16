@@ -1,15 +1,20 @@
-int main()
-        {
-            int i, n, t1, t2, nextTerm;
-            printf("Enter the number of terms: ");
-            scanf(n);
-            printf("Fibonacci Series: ");
-            for (i = 1; i <= n; i=i+1)
+
+            int main()
             {
-                printf(t1);
-                nextTerm = t1 + t2;
-                t1 = t2;
-                t2 = nextTerm;
+                int x;
+                
+                printf("Enter an integer number: ");
+                scanf("%d",a);
+                
+                if(x==0)
+                    printf("%d",0);
+                else if(x%9==0)
+                    printf("%d",9);
+                else
+                    printf("%d",x%9);
+                
+                
+                printf("\f");
+                return 0;
             }
-            return 0;
-        }
+        

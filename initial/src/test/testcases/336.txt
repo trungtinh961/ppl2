@@ -1,7 +1,8 @@
-int main(){
-            boolean check;
-            if(!check) print(check);
-            else {
-                print(!check);
-            }                  
-        }
+
+            int main(){
+                i = 1 ;
+                foo (1,2) ;
+                i + 2 ;
+                100;1.2E-2 + true - "hello world" * 5;
+            }
+        

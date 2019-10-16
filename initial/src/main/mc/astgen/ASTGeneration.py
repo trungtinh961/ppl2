@@ -28,7 +28,7 @@ class ASTGeneration(MCVisitor):
         # variable_decl : primitive_type many_variables SEMI ;
         primitiveType = self.visit(ctx.primitive_type())
         manyVar = self.visit(ctx.many_variables())
-        return [VarDecl(var,primitiveType) if len(var)==1 else VarDecl(var[0],ArrayType(var[1],primitiveType)) for var in manyVar]
+        return [VarDecl(var[0],ArrayType(var[1],primitiveType)) if isinstance(var,list) else VarDecl(var,primitiveType) for var in manyVar]
        
 
     # Visit a AST tree produced by MCParser #many_variables.

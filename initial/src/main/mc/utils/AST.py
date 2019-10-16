@@ -153,7 +153,7 @@ class UnaryOp(Expr):
         self.body = body
 
     def __str__(self):
-        return "UnaryOp(" + self.op + "," + str(self.body) + ")"
+        return "UnaryOp(\"" + self.op + "\"," + str(self.body) + ")"
 
     def accept(self, v, param):
         return v.visitUnaryOp(self, param)

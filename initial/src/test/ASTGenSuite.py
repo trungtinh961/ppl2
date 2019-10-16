@@ -232,3 +232,87 @@ class ASTGenSuite(unittest.TestCase):
         """
         expect = str(Program([FuncDecl(Id("school"),[VarDecl("a",StringType()),VarDecl("b",StringType()),VarDecl("c",StringType())],ArrayPointerType(StringType()),Block([]))]))
         self.assertTrue(TestAST.checkASTGen(input,expect,325))
+
+    def test_expression_1(self):
+        
+        input = """
+            int main() {
+            a = !b + -a;
+        }
+        """
+        expect = str(Program([FuncDecl(Id("main"),[],IntType(),Block([BinaryOp("=",Id("a"),BinaryOp("+",UnaryOp("!",Id("b")),UnaryOp("-",Id("a"))))]))]))
+        self.assertTrue(TestAST.checkASTGen(input,expect,326))
+
+    def test_expression_2(self):
+        
+        input = """
+            int main() {
+            a = b / c % d * e;
+        }
+        """
+        expect = str(Program([FuncDecl(Id("main"),[],IntType(),Block([BinaryOp("=",Id("a"),BinaryOp("*",BinaryOp("%",BinaryOp("/",Id("b"),Id("c")),Id("d")),Id("e")))]))]))
+        self.assertTrue(TestAST.checkASTGen(input,expect,327))
+
+    def test_expression_3(self):
+        
+        input = """
+            
+        """
+        expect = str()
+        self.assertTrue(TestAST.checkASTGen(input,expect,328))
+
+    def test_expression_4(self):
+        
+        input = """
+            
+        """
+        expect = str()
+        self.assertTrue(TestAST.checkASTGen(input,expect,329))
+
+    def test_expression_5(self):
+        
+        input = """
+            
+        """
+        expect = str()
+        self.assertTrue(TestAST.checkASTGen(input,expect,330))
+
+    def test_expression_6(self):
+        
+        input = """
+            
+        """
+        expect = str()
+        self.assertTrue(TestAST.checkASTGen(input,expect,331))
+
+    def test_expression_7(self):
+        
+        input = """
+            
+        """
+        expect = str()
+        self.assertTrue(TestAST.checkASTGen(input,expect,332))
+
+    def test_expression_8(self):
+        
+        input = """
+            
+        """
+        expect = str()
+        self.assertTrue(TestAST.checkASTGen(input,expect,333))
+
+    def test_expression_9(self):
+        
+        input = """
+            
+        """
+        expect = str()
+        self.assertTrue(TestAST.checkASTGen(input,expect,334))
+
+    def test_expression_10(self):
+        
+        input = """
+            
+        """
+        expect = str()
+        self.assertTrue(TestAST.checkASTGen(input,expect,335))

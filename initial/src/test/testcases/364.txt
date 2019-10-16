@@ -1,3 +1,33 @@
-void main(){
-            a[b[c[foo(d)]]];
-        }
+
+            void insertionSort(){
+                int valueToInsert;
+                int holePosition;
+                int i;
+                
+                // lap qua tat ca cac so
+                for(i = 1; i < MAX; i+1){ 
+                    
+                    // chon mot gia tri de chen
+                    valueToInsert = intArray[i];
+                        
+                    // lua chon vi tri de chen
+                    holePosition = i;
+                        
+                    // kiem tra xem so lien truoc co lon hon gia tri duoc chen khong
+                    do {
+                        intArray[holePosition] = intArray[holePosition-1];
+                        holePosition-1;
+                        printf(" Di chuyen phan tu : %d\n" , intArray[holePosition]);
+                    }while (holePosition > 0 && intArray[holePosition-1] > valueToInsert);
+
+                    if(holePosition != i){
+                        printf(" Chen phan tu : %d, tai vi tri : %d\n" , valueToInsert,holePosition);
+                        // chen phan tu tai vi tri chen 
+                        intArray[holePosition] = valueToInsert;   
+                    }
+
+                    printf("Vong lap thu %d#:",i);
+                    display();
+                }  
+            }
+        

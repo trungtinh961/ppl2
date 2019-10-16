@@ -1,4 +1,8 @@
-int main()
-        {
-            a = !b + -a;
+
+            int foo(int a[]) {
+            int a;
+            a=5;
+            print(hello);
+            return a;
         }
+        

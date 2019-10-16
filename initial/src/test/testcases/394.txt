@@ -1,22 +1,5 @@
-int main()
-        {
-            int n, reversedInteger, remainder, originalInteger;
-            printf("Enter an integer: ");
-            scanf(n);
-            originalInteger = n;
-            // reversed integer is stored in variable 
-            do
-            {
-                remainder = n%10;
-                reversedInteger = reversedInteger*10 + remainder;
-                n = n / 10;
+
+            int main(){
+                (a*(a*(a*1)));
             }
-            while( n!=0 );
-            // palindrome if orignalInteger and reversedInteger are equal
-            if (originalInteger == reversedInteger)
-                printf(originalInteger);
-            else
-                printf(originalInteger);
-    
-            return 0;
-        }
+        

@@ -1,3 +1,43 @@
-int main(){
-            a=1/2+3*4-5/6;
-        }
+
+            void bubbleSort() {
+                int temp;
+                int i,j;
+                    
+                boolean swapped ;       
+                
+                // lap qua tat ca cac so
+                for(i = 0; i < MAX-1; i+1) { 
+                    swapped = false;
+                        
+                    // vong lap thu hai
+                    for(j = 0; j < MAX-1-i; j+1) {
+                        printf("     So sanh cac phan tu: [ %d, %d ] ", list[j],list[j+1]);
+
+                        // kiem xa xem so ke tiep co nho hon so hien tai hay khong
+                        //   trao doi cac so. 
+                        //  (Muc dich: lam noi bot (bubble) so lon nhat) 
+                            
+                        if(list[j] > list[j+1]) {
+                            temp = list[j];
+                            list[j] = list[j+1];
+                            list[j+1] = temp;
+
+                            swapped = true;
+                            printf(" => trao doi [%d, %d]\n",list[j],list[j+1]);
+                        }else {
+                            printf(" => khong can trao doi\n");
+                        }
+                            
+                    }
+
+                    // neu khong can trao doi nua, tuc la 
+                    //   mang da duoc sap xep va thoat khoi vong lap. 
+                    if(!swapped) {
+                        break;
+                    }
+                    
+                    printf("Vong lap thu %d#: ",(i+1)); 
+                    display();                     
+                }        
+            }
+        

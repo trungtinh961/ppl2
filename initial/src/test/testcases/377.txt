@@ -1,15 +1,14 @@
-int main(){
-            do
-            {
-                {
-                    if (b>c)
-                        return a+1;
-                    else
-                        return b-1;                    
-                }
+
+            int main(){
+                1.2E-2 + true - "hello world" * 5;
             }
-            {
-                a+b;
+            float main(){
+                1.2E-2 + true - "hello world" * 5;
             }
-            while (a<5);
-        }
+            boolean main(){
+                1.2E-2 + true - "hello world" * 5;
+            }
+            void main(){
+                1.2E-2 + true - "hello world" * 5;
+            }
+        

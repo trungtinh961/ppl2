@@ -1,5 +1,17 @@
-string test(int test[],string test1){
-            if (a>b+c) 
-                a=2; else a=3;
-            return "kael99";
-        }
+
+            int gcd(int a, int b){
+                //  a = 0 => ucln(a,b) = b
+                //  b = 0 => ucln(a,b) = a
+                if (a == 0 || b == 0){
+                    return a + b;
+                }
+                do {
+                    if (a > b){
+                        a = a - b; // a = a - b
+                    }else{
+                        b = b - a;
+                    }
+                } while (a != b);
+                return a; // return a or b, 
+            }
+        

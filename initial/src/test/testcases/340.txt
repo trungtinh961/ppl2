@@ -1,20 +1,10 @@
-int i;
-        int f(){
-            return 200;
-        }
-        void main(){
-            int test;
-            test=f();
-            putIntLn(test);
-            {
-                int i;
-                int test;
-                int f;
-                test=f=i=100;
-                putIntLn(i);
-                putIntLn(test);
-                putIntLn(f);
 
+            int main(){
+                {
+                    int a[1],c,d;
+                    string b[2],e,f;
+                    float c[3],awfeawef,awerer;
+                    boolean d[4],_;
+                }
             }
-            putIntLn(test);
-        }
+        

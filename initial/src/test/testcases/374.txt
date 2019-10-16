@@ -1,3 +1,10 @@
-int main() {
-            a = a + b < c == d;
-        }
+
+            void main(){
+                    funcall(a, a + 1);
+                    if(char*b+arr[char*char(b)])
+                        for(smt;smt;smt){}
+                    else
+                        return;
+                    arr[arr[arr[3]]];
+                }
+        

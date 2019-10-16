@@ -1,1 +1,5 @@
-int main(){if(b) if (a) if (c) {} else {} else {} }
+
+            int main(){
+                a[a[a[foo(a)]]];
+            }
+        

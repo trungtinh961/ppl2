@@ -25,11 +25,12 @@ class ParserSuite(unittest.TestCase):
     def test_1(self):
         
         input = """
-            float[] add(float a, float b[]) {
-                for (i = 0; i >= 0; i = i + 1) {
-                    b[i] = a + b[i];
-                }
-                return b;
+            int getPower(int b,int p)
+            {
+            int result;
+            if(p==0)
+                return result;
+            result=b*(getPower(b,p-1));  //call function again
             }
         """
         expect = "successful"

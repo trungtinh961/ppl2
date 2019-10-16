@@ -1,7 +1,5 @@
 
-            int[] foo(int a, float b[]) {
-                int c[3];
-                if (a>0) foo(a-1,b);
-                return c; 
-        }
+            int main(){
+                a>b==c;
+            }
         

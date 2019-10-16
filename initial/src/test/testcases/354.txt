@@ -1,8 +1,12 @@
-int main(){
-            if (a<b) c=a; 
-            else 
-                if(c<b)
-                    c=b;
-                else
-                    c=b;
-        }
+
+            int main() {
+                int array[10];
+                int loop;
+
+                printf("In tat ca phan tu cua mang: \n\n");
+                for(loop = 0; loop < 10; loop+1)
+                    printf("%d ", array[loop]);
+                    
+                return 0;
+            }
+        

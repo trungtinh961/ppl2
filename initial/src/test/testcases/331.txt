@@ -1,7 +1,3 @@
-int main(){
-            int i;
-            i=10;
-            print(i);
-            system("pause");
-            return 0;
-        }
+
+            
+        
