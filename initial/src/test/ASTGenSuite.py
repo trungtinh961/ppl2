@@ -337,16 +337,17 @@ class ASTGenSuite(unittest.TestCase):
     def test_expression_15(self):        
         input = """
             int[] foo (int b[]){
-            int a [1];
-            if (b>c) return a;
-            else return b;
+                int a [1];
+                if (b>c) return a;
+                else return b;
+            }
         """
         expect = str(Program([FuncDecl(Id("foo"),[VarDecl("b",ArrayPointerType(IntType()))],ArrayPointerType(IntType()),Block([VarDecl("a",ArrayType(1,IntType())),If(BinaryOp(">",Id("b"),Id("c")),Return(Id("a")),Return(Id("b")))]))]))
         self.assertTrue(TestAST.checkASTGen(input,expect,340))
 
     def test_statement_1(self):        
         input = """
-            int main() {
+        int main() {
             if (a>b) a=1;
         }
         """
@@ -357,6 +358,7 @@ class ASTGenSuite(unittest.TestCase):
         input = """
             int main() {
             if (a>b) a=1; else a=0;
+            }
         """
         expect = str(Program([FuncDecl(Id("main"),[],IntType(),Block([If(BinaryOp(">",Id("a"),Id("b")),BinaryOp("=",Id("a"),IntLiteral(1)),BinaryOp("=",Id("a"),IntLiteral(0)))]))]))
         self.assertTrue(TestAST.checkASTGen(input,expect,342))
@@ -520,63 +522,340 @@ class ASTGenSuite(unittest.TestCase):
         int[] foo(boolean a, float b){}
         int main() {
             putIntLn(foo(a>=b,00.E2019)[10]);
+        }
         """
         expect = str(Program([FuncDecl(Id("foo"),[VarDecl("a",BoolType()),VarDecl("b",FloatType())],ArrayPointerType(IntType()),Block([])),FuncDecl(Id("main"),[],IntType(),Block([CallExpr(Id("putIntLn"),[ArrayCell(CallExpr(Id("foo"),[BinaryOp(">=",Id("a"),Id("b")),FloatLiteral(0.0)]),IntLiteral(10))])]))]))
         self.assertTrue(TestAST.checkASTGen(input,expect,354))
 
-    # def test_all_1(self):        
-    #     input = """
-            
-    #     """
-    #     expect = str()
-    #     self.assertTrue(TestAST.checkASTGen(input,expect,354))
+    def test_all_2(self):        
+        input = """
+        /* this is a comment */ 
+        void foo() {if (a==0) {b = a+c;}}
+        """
+        expect = str(Program([FuncDecl(Id("foo"),[],VoidType(),Block([If(BinaryOp("==",Id("a"),IntLiteral(0)),Block([BinaryOp("=",Id("b"),BinaryOp("+",Id("a"),Id("c")))]))]))]))
+        self.assertTrue(TestAST.checkASTGen(input,expect,355))
 
-    # def test_all_1(self):        
-    #     input = """
-            
-    #     """
-    #     expect = str()
-    #     self.assertTrue(TestAST.checkASTGen(input,expect,354))
+    def test_all_3(self):        
+        input = """
+        int main() {
+            foo(2)[3+x] = a[b[2]] +3;
+        }    
+        """
+        expect = str(Program([FuncDecl(Id("main"),[],IntType(),Block([BinaryOp("=",ArrayCell(CallExpr(Id("foo"),[IntLiteral(2)]),BinaryOp("+",IntLiteral(3),Id("x"))),BinaryOp("+",ArrayCell(Id("a"),ArrayCell(Id("b"),IntLiteral(2))),IntLiteral(3)))]))]))
+        self.assertTrue(TestAST.checkASTGen(input,expect,356))
 
-    # def test_all_1(self):        
-    #     input = """
-            
-    #     """
-    #     expect = str()
-    #     self.assertTrue(TestAST.checkASTGen(input,expect,354))
+    def test_all_4(self):        
+        input = """
+        int main() {
+            int a,b[10];
+            a = b[1] = foo()[3] = x = 1 ;    
+        }
+        """
+        expect = str(Program([FuncDecl(Id("main"),[],IntType(),Block([VarDecl("a",IntType()),VarDecl("b",ArrayType(10,IntType())),BinaryOp("=",Id("a"),BinaryOp("=",ArrayCell(Id("b"),IntLiteral(1)),BinaryOp("=",ArrayCell(CallExpr(Id("foo"),[]),IntLiteral(3)),BinaryOp("=",Id("x"),IntLiteral(1)))))]))]))
+        self.assertTrue(TestAST.checkASTGen(input,expect,357))
 
-    # def test_all_1(self):        
-    #     input = """
-            
-    #     """
-    #     expect = str()
-    #     self.assertTrue(TestAST.checkASTGen(input,expect,354))
+    def test_all_5(self):        
+        input = """
+        int main() {
+            a[(123)];
+        }    
+        """
+        expect = str(Program([FuncDecl(Id("main"),[],IntType(),Block([ArrayCell(Id("a"),IntLiteral(123))]))]))
+        self.assertTrue(TestAST.checkASTGen(input,expect,358))
 
-    # def test_all_1(self):        
+    # def test_all_6(self):        
     #     input = """
             
     #     """
-    #     expect = str()
-    #     self.assertTrue(TestAST.checkASTGen(input,expect,354))
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,359))
 
-    # def test_all_1(self):        
+    # def test_all_7(self):        
     #     input = """
             
     #     """
-    #     expect = str()
-    #     self.assertTrue(TestAST.checkASTGen(input,expect,354))
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,360))
 
-    # def test_statement_12(self):        
+    # def test_all_8(self):        
     #     input = """
             
     #     """
-    #     expect = str()
-    #     self.assertTrue(TestAST.checkASTGen(input,expect,352))
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,361))
 
-    # def test_statement_12(self):        
+    # def test_all_9(self):        
     #     input = """
             
     #     """
-    #     expect = str()
-    #     self.assertTrue(TestAST.checkASTGen(input,expect,352))
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,362))
+
+    # def test_all_10(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,363))
+
+    # def test_all_11(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,364))
+
+    # def test_all_12(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,365))
+
+    # def test_all_13(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,366))
+
+    # def test_all_14(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,367))
+
+    # def test_all_15(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,368))
+
+    # def test_all_16(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,369))
+
+    # def test_all_17(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,370))
+
+    # def test_all_18(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,371))
+
+    # def test_all_19(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,372))
+
+    # def test_all_20(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,373))
+
+    # def test_all_21(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,374))
+
+    # def test_all_22(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,375))
+
+    # def test_all_23(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,376))
+
+    # def test_all_24(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,377))
+
+    # def test_all_25(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,378))
+
+    # def test_all_26(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,379))
+
+    # def test_all_27(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,380))
+
+    # def test_all_28(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,381))
+
+    # def test_all_29(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,382))
+
+    # def test_all_30(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,383))
+
+    # def test_all_31(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,384))
+
+    # def test_all_32(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,385))
+
+    # def test_all_33(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,386))
+
+    # def test_all_34(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,387))
+
+    # def test_all_35(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,388))
+
+    # def test_all_36(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,389))
+
+    # def test_all_37(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,390))
+
+    # def test_all_38(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,391))
+
+    # def test_all_39(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,392))
+
+    # def test_all_40(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,393))
+
+    # def test_all_41(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,394))
+
+    # def test_all_42(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,395))
+
+    # def test_all_43(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,396))
+
+    # def test_all_44(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,397))
+
+    # def test_all_45(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,398))
+
+    # def test_all_46(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,399))
+
+    # def test_all_47(self):        
+    #     input = """
+            
+    #     """
+    #     expect = str(Program([]))
+    #     self.assertTrue(TestAST.checkASTGen(input,expect,400))
+
+
     

@@ -1,30 +1,3 @@
 
-            void selectionSort(){
-                int indexMin,i,j; 
-                // lap qua ta ca cac so
-                for(i = 0; i < MAX-1; i+1){ 
-                    
-                    // thiet lap phan tu hien tai la min 
-                    indexMin = i;
-                        
-                    // kiem tra phan tu hien tai co phai la nho nhat khong 
-                    for(j = i+1;j<MAX;j+1){
-                        if(intArray[j] < intArray[indexMin]){
-                            indexMin = j;
-                        }
-                    }
-
-                    if(indexMin != i){
-                        printf("Trao doi phan tu: [ %d, %d ]\n" , intArray[i], intArray[indexMin]); 
-                            
-                        // Trao doi cac so 
-                        temp = intArray[indexMin];
-                        intArray[indexMin] = intArray[i];
-                        intArray[i] = temp;
-                    }          
-
-                    printf("Vong lap thu %d#:",(i+1));
-                    display();
-                }
-            }  
+            
         

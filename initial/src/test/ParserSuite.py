@@ -27,10 +27,7 @@ class ParserSuite(unittest.TestCase):
         input = """
             int getPower(int b,int p)
             {
-            int result;
-            if(p==0)
-                return result;
-            result=b*(getPower(b,p-1));  //call function again
+                arr[a[b[c[d[e[f[funcall(10,2,3,arr[arr[50]]*40)]]]]]]];
             }
         """
         expect = "successful"

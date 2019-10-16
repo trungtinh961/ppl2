@@ -2,4 +2,5 @@
         int[] foo(boolean a, float b){}
         int main() {
             putIntLn(foo(a>=b,00.E2019)[10]);
+        }
         

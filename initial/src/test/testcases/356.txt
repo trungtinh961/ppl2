@@ -1,20 +1,5 @@
 
-            int main() {
-                int array[10];
-                int sum, loop;
-                float avg;
-
-                sum = avg = 0;
-                
-                printf("Chuong trinh tinh gia tri trung binh cua mang: \n\n");
-                for(loop = 0; loop < 10; loop+1) {
-                    sum = sum + array[loop];
-                }
-                
-                avg = sum / loop;
-                
-                printf("Gia tri trung binh cua mang la: %.2f", avg);   
-                
-                return 0;
-            }
+        int main() {
+            foo(2)[3+x] = a[b[2]] +3;
+        }    
         

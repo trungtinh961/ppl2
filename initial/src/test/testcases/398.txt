@@ -1,8 +1,3 @@
 
-            int main(){
-                  for (_=1;!0.1e66;"TRUC"+"BK")
-                    if (a+f&&d) if (c) if (d) 
-                        do {a+b+c=e;"AA"+"bb";"AA"/"BB";}
-                            while (true+false);
-               }
+            
         

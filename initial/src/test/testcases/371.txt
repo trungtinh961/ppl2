@@ -1,15 +1,3 @@
 
-            int foo(int a[]) {
-           do{
-               foo(1);
-               a=2;
-               return b;
-           }
-           {
-               foo(2);
-               countinue;
-           }
-           while
-               a<5;
-        }
+            
         

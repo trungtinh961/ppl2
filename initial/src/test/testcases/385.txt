@@ -1,5 +1,3 @@
 
-            int main(){
-                ci=principal*((pow((1+rate/100),year)-1));
-            }
+            
         

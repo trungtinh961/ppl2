@@ -1,32 +1,6 @@
 
-            int factorial(int n) {
-                int f;
-                
-                for(f = 1; n > 1; n-1)
-                    f = f * n;
-                    
-                return f;
-            }
-
-            int ncr(int n,int r) {
-                return factorial(n) / ( factorial(n-r) * factorial(r) );
-            }
-
-            int main() {
-                int n, i, j;
-
-                n = 5;
-
-                printf("Ve tam giac Pascal:\n\n");
-                for(i = 0; i <= n; i+1) {
-                    for(j = 0; j <= n-i; j+1)
-                        printf("  ");
-                        
-                    for(j = 0; j <= i; j+1)
-                        printf(" %3d", ncr(i, j));
-
-                    printf("\n");
-                }
-                return 0;
-            }
+        int main() {
+            int a,b[10];
+            a = b[1] = foo()[3] = x = 1 ;    
+        }
         

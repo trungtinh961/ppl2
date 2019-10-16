@@ -1,27 +1,3 @@
 
-            int main(){
-                append_category(list_category,cosmetics);
-                    append_category(list_category,food);
-                    append_category(list_category,beverage);
-                    append_category(list_category,phone);
-                    print_categories(list_category);
-
-                    product_clothes("P001","Clothes",2000,1000,10,"Cosmetics",list_category);
-                    product_meat("P002","Meat",3000,1000,20,"Food",list_category);
-                    product_beer("P003","Beer",4000,1000,30,"Beverage",list_category);
-                    product_perfume("P004","Perfume",5000,1000,40,"Cosmetics",list_category);
-                    product_fish("P005","Fish",6000,1000,50,"Food",list_category);
-                    product_milk("P006","Milk",7000,1000,60,"Beverage",list_category);
-                    product_juice("P007","Juice",8000,1000,0,"Beverage",list_category);
-
-                    add_product(list_product,clothes);
-                    add_product(list_product,meat);
-                    add_product(list_product,beer);
-                    add_product(list_product,perfume);
-                    add_product(list_product,fish);
-                    add_product(list_product,milk);
-                    add_product(list_product,juice);
-
-                    print_products(list_product);
-                }
+            
         

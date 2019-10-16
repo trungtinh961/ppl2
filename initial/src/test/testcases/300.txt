@@ -1,1 +1,6 @@
-int a,b[10];
+
+            int a;
+            string b;
+            float c;
+            boolean d;
+        

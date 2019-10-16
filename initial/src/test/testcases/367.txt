@@ -1,7 +1,3 @@
 
-            int main(){}
-            void main2(){}
-            string main3(){}
-            boolean main4(){}
-            float _(){}
+            
         

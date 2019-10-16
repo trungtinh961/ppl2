@@ -1,7 +1,3 @@
 
-            int main(){
-                rate=rate/(12*100); /*one month interest*/
-                time=time*12; /*one month period*/
-                emi= (principal*rate*pow(1+rate,time))/(pow(1+rate,time)-1);
-            }
+            
         
