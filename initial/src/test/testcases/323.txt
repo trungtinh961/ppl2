@@ -1,0 +1,5 @@
+
+            boolean isFalse(boolean a) {
+                if (a == true) {return false;}
+            }
+        

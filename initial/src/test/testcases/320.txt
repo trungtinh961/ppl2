@@ -1,0 +1,6 @@
+
+            int main() {
+            boolean boo[2];
+            boo[1] = true;
+        }
+        

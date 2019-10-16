@@ -37,7 +37,7 @@ class VarDecl(Decl,BlockMember):
         self.varType = varType
 
     def __str__(self):
-        return "VarDecl(" + str(self.variable) + "," + str(self.varType) + ")"
+        return "VarDecl(\"" + str(self.variable) + "\"," + str(self.varType) + ")"
 
     def accept(self, v, param):
         return v.visitVarDecl(self, param)
@@ -65,35 +65,35 @@ class Type(AST):
 
 class IntType(Type):
     def __str__(self):
-        return "IntType"
+        return "IntType()"
 
     def accept(self, v, param):
         return v.visitIntType(self, param)
 
 class FloatType(Type):
     def __str__(self):
-        return "FloatType"
+        return "FloatType()"
 
     def accept(self, v, param):
         return v.visitFloatType(self, param)
 
 class BoolType(Type):
     def __str__(self):
-        return "BoolType"
+        return "BoolType()"
 
     def accept(self, v, param):
         return v.visitBoolType(self, param)
 
 class StringType(Type):
     def __str__(self):
-        return "StringType"
+        return "StringType()"
 
     def accept(self, v, param):
         return v.visitStringType(self, param)
 
 class VoidType(Type):
     def __str__(self):
-        return "VoidType"
+        return "VoidType()"
 
     def accept(self, v, param):
         return v.visitVoidType(self, param)
@@ -106,7 +106,7 @@ class ArrayType(Type):
         self.eleType = eleType
         
     def __str__(self):
-        return "ArrayType(" + str(self.eleType) + "," + str(self.dimen) + ")"
+        return "ArrayType(" + str(self.dimen) + "," + str(self.eleType) + ")"
 
     def accept(self, v, param):
         return v.visitArrayType(self, param)
@@ -117,7 +117,7 @@ class ArrayPointerType(Type):
         self.eleType = eleType
         
     def __str__(self):
-        return "ArrayTypePointer(" + str(self.eleType) + ")"
+        return "ArrayPointerType(" + str(self.eleType) + ")"
 
     def accept(self, v, param):
         return v.visitArrayPointerType(self, param)
@@ -140,7 +140,7 @@ class BinaryOp(Expr):
         self.right = right
 
     def __str__(self):
-        return "BinaryOp(" + self.op + "," + str(self.left) + "," + str(self.right) + ")"
+        return "BinaryOp(\"" + self.op + "\"," + str(self.left) + "," + str(self.right) + ")"
 
     def accept(self, v, param):
         return v.visitBinaryOp(self, param)
@@ -183,7 +183,7 @@ class Id(LHS):
         self.name = name
 
     def __str__(self):
-        return  "Id(" + self.name + ")" 
+        return  "Id(\"" + self.name + "\")" 
 
     def accept(self, v, param):
         return v.visitId(self, param)
@@ -237,7 +237,7 @@ class For(Stmt):
         self.loop = loop
 
     def __str__(self):
-        return "For(" + str(self.expr1) + ";" + str(self.expr2) + ";" + str(self.expr3) + ";" + str(self.loop) + ")"
+        return "For(" + str(self.expr1) + "," + str(self.expr2) + "," + str(self.expr3) + "," + str(self.loop) + ")"
 
     def accept(self, v, param):
         return v.visitFor(self, param)
@@ -313,7 +313,7 @@ class StringLiteral(Literal):
         self.value = value
 
     def __str__(self):
-        return "StringLiteral(" + self.value + ")"
+        return "StringLiteral(\"" + self.value + "\")"
 
     def accept(self, v, param):
         return v.visitStringLiteral(self, param)
@@ -324,7 +324,7 @@ class BooleanLiteral(Literal):
         self.value = value
 
     def __str__(self):
-        return "BooleanLiteral(" + str(self.value).lower() + ")"
+        return "BooleanLiteral(\"" + str(self.value).lower() + "\")"
 
     def accept(self, v, param):
         return v.visitBooleanLiteral(self, param)

@@ -21,3 +21,16 @@ class ParserSuite(unittest.TestCase):
         input = """int main( {}"""
         expect = "Error on line 1 col 10: {"
         self.assertTrue(TestParser.checkParser(input,expect,203))
+
+    def test_1(self):
+        
+        input = """
+            float[] add(float a, float b[]) {
+                for (i = 0; i >= 0; i = i + 1) {
+                    b[i] = a + b[i];
+                }
+                return b;
+            }
+        """
+        expect = "successful"
+        self.assertTrue(TestParser.checkParser(input,expect,204)) 

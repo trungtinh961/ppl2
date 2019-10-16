@@ -91,18 +91,6 @@ class ASTGeneration(MCVisitor):
         return VarDecl(ctx.ID().getText(),self.visit(ctx.primitive_type())) if ctx.ID() else self.visit(ctx.input_array_pointer_type())
 
 
-    # Visit a AST tree produced by MCParser #var_stmt_list.
-    def visitVar_stmt_list(self, ctx:MCParser.Var_stmt_listContext):
-        # var_stmt_list : (var_stmt var_stmt*) ? ;
-        return [self.visit(x) for x in ctx.var_stmt()]
-
-
-    # Visit a AST tree produced by MCParser #var_stmt.
-    def visitVar_stmt(self, ctx:MCParser.Var_stmtContext):
-        # var_stmt : variable_decl | statement ;
-        return self.visit(ctx.variable_decl()) if ctx.variable_decl() else self.visit(ctx.statement())
-
-
     # Visit a AST tree produced by MCParser #array_pointer_type.
     def visitArray_pointer_type(self, ctx:MCParser.Array_pointer_typeContext):
         # array_pointer_type : input_array_pointer_type | output_array_pointer_type;
@@ -143,38 +131,25 @@ class ASTGeneration(MCVisitor):
     def visitExpr3(self, ctx:MCParser.Expr3Context):
         # expr3 : expr4 (EQ | NEQ) expr4 | expr4;
         if ctx.getChildCount() == 3:
-            if ctx.EQ():
-                return BinaryOp(ctx.EQ().getText(),self.visit(ctx.expr4()),self.visit(ctx.expr4()))
-            else:
-                return BinaryOp(ctx.NEQ().getText(),self.visit(ctx.expr4()),self.visit(ctx.expr4()))
+            return BinaryOp(ctx.getChild(1).getText(),self.visit(ctx.expr4(0)),self.visit(ctx.expr4(1)))
         else:
-            return self.visit(ctx.expr4())
+            return self.visit(ctx.expr4(0))
 
 
     # Visit a AST tree produced by MCParser #expr4.
     def visitExpr4(self, ctx:MCParser.Expr4Context):
         # expr4 : expr5 (LESS | LEQ | GRATER | GEQ) expr5 | expr5;
         if ctx.getChildCount() == 3:
-            if ctx.LESS():
-                return BinaryOp(ctx.LESS().getText(),self.visit(ctx.expr5()),self.visit(ctx.expr5()))
-            elif ctx.LEQ():
-                return BinaryOp(ctx.LEQ().getText(),self.visit(ctx.expr5()),self.visit(ctx.expr5()))
-            elif ctx.GRATER():
-                return BinaryOp(ctx.GRATER().getText(),self.visit(ctx.expr5()),self.visit(ctx.expr5()))
-            elif ctx.GEQ():
-                return BinaryOp(ctx.GEQ().getText(),self.visit(ctx.expr5()),self.visit(ctx.expr5()))
+            return BinaryOp(ctx.getChild(1).getText(),self.visit(ctx.expr5(0)),self.visit(ctx.expr5(1)))
         else:
-            return self.visit(ctx.expr5())
+            return self.visit(ctx.expr5(0))
 
 
     # Visit a AST tree produced by MCParser #expr5.
     def visitExpr5(self, ctx:MCParser.Expr5Context):
         # expr5 : expr5 (ADD | SUB) expr6 | expr6;
         if ctx.getChildCount() == 3:
-            if ctx.ADD():
-                return BinaryOp(ctx.ADD().getText(),self.visit(ctx.expr5()),self.visit(ctx.expr6()))
-            else:
-                return BinaryOp(ctx.SUB().getText(),self.visit(ctx.expr5()),self.visit(ctx.expr6()))
+            return BinaryOp(ctx.getChild(1).getText(),self.visit(ctx.expr5()),self.visit(ctx.expr6()))            
         else:
             return self.visit(ctx.expr6())
 
@@ -183,12 +158,7 @@ class ASTGeneration(MCVisitor):
     def visitExpr6(self, ctx:MCParser.Expr6Context):
         # expr6 : expr6 (DIV | MUL | MOD) expr7 | expr7;
         if ctx.getChildCount() == 3:
-            if ctx.DIV():
-                return BinaryOp(ctx.EQ().getText(),self.visit(ctx.expr6()),self.visit(ctx.expr7()))
-            elif ctx.MUL():
-                return BinaryOp(ctx.MUL().getText(),self.visit(ctx.expr6()),self.visit(ctx.expr7()))
-            else:
-                return BinaryOp(ctx.MOD().getText(),self.visit(ctx.expr6()),self.visit(ctx.expr7()))
+            return BinaryOp(ctx.getChild(1).getText(),self.visit(ctx.expr6()),self.visit(ctx.expr7()))
         else:
             return self.visit(ctx.expr7())
 
@@ -197,10 +167,7 @@ class ASTGeneration(MCVisitor):
     def visitExpr7(self, ctx:MCParser.Expr7Context):
         # expr7 : (SUB | NOT) expr7 | expr8;
         if ctx.getChildCount() == 2:
-            if ctx.SUB():
-                return UnaryOp(ctx.SUB().getText(),self.visit(ctx.expr7()))
-            else:
-                return UnaryOp(ctx.NOT().getText(),self.visit(ctx.expr7()))
+            return UnaryOp(ctx.getChild(0).getText(),self.visit(ctx.expr7()))
         else:
             return self.visit(ctx.expr8())
 
@@ -238,13 +205,13 @@ class ASTGeneration(MCVisitor):
     def visitLiteral(self, ctx:MCParser.LiteralContext):
         # literal : INTLIT | FLOATLIT | BOOLEANLIT | STRINGLIT;
         if ctx.INTLIT():
-            return IntLiteral(ctx.INTLIT())
+            return IntLiteral(int(ctx.INTLIT().getText()))
         elif ctx.FLOATLIT():
-            return FloatLiteral(ctx.FLOATLIT())
+            return FloatLiteral(float(ctx.FLOATLIT().getText()))
         elif ctx.STRINGLIT():
-            return StringLiteral(ctx.STRINGLIT())
+            return StringLiteral(ctx.STRINGLIT().getText())
         elif ctx.BOOLEANLIT():
-            return BooleanLiteral(ctx.BOOLEANLIT())
+            return BooleanLiteral(ctx.BOOLEANLIT().getText())
 
 
     # Visit a AST tree produced by MCParser #func_call.
@@ -275,7 +242,7 @@ class ASTGeneration(MCVisitor):
     # Visit a AST tree produced by MCParser #if_stmt.
     def visitIf_stmt(self, ctx:MCParser.If_stmtContext):
         # if_stmt : IF LP expr RP statement (ELSE statement)?;
-        return If(self.visit(ctx.expr()),self.visit(ctx.statement())) if ctx.getChildCount() == 5 else If(self.visit(ctx.expr()),self.visit(ctx.statement(0)),self.visit(ctx.statement(1)))
+        return If(self.visit(ctx.expr()),self.visit(ctx.statement(0))) if ctx.getChildCount() == 5 else If(self.visit(ctx.expr()),self.visit(ctx.statement(0)),self.visit(ctx.statement(1)))
 
 
     # Visit a AST tree produced by MCParser #dowhile_stmt.
@@ -318,3 +285,15 @@ class ASTGeneration(MCVisitor):
     def visitBlock_statement(self, ctx:MCParser.Block_statementContext):
         # block_statement : LB var_stmt_list RB ;
         return Block(self.visit(ctx.var_stmt_list()))
+
+
+    # Visit a AST tree produced by MCParser #var_stmt_list.
+    def visitVar_stmt_list(self, ctx:MCParser.Var_stmt_listContext):
+        # var_stmt_list : var_stmt* ;        
+        return [i for x in ctx.var_stmt() for i in self.visit(x)] 
+
+
+    # Visit a AST tree produced by MCParser #var_stmt.
+    def visitVar_stmt(self, ctx:MCParser.Var_stmtContext):
+        # var_stmt : variable_decl | statement ;
+        return self.visit(ctx.variable_decl()) if ctx.variable_decl() else [self.visit(ctx.statement())]

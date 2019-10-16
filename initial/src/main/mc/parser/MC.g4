@@ -144,8 +144,7 @@ function_decl       : func_type ID LP parameter_list RP block_statement ;
 func_type           : primitive_type | VOIDTYPE | output_array_pointer_type ;
 parameter_list      : (parameter_decl (CM parameter_decl)*)? ;
 parameter_decl      : primitive_type ID | input_array_pointer_type ;
-var_stmt_list       : (var_stmt var_stmt*) ? ;
-var_stmt            : variable_decl | statement ;
+
 
 array_pointer_type          : input_array_pointer_type | output_array_pointer_type;
 input_array_pointer_type    : primitive_type ID LSB RSB;
@@ -191,3 +190,7 @@ return_stmt         : RETURN expr? SEMI;
 expr_stmt           : expr SEMI;
 
 block_statement     : LB var_stmt_list RB ;
+
+var_stmt_list       : var_stmt* ;
+
+var_stmt            : variable_decl | statement ;

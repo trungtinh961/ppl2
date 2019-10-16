@@ -1,1 +1,1 @@
-Program([VarDecl(a,IntType),VarDecl(b,FloatType),VarDecl(c,StringType),VarDecl(d,BoolType)])
+Program([VarDecl("a",IntType()),VarDecl("b",FloatType()),VarDecl("c",StringType()),VarDecl("d",BoolType())])

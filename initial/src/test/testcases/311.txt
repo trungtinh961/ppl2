@@ -1,0 +1,4 @@
+int foo(int a, float b) {
+            int c[5];
+            float d;
+        }
