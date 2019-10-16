@@ -1,0 +1,1 @@
+Program([FuncDecl(Id("main"),[],IntType(),Block([If(BinaryOp(">",Id("a"),Id("b")),Block([VarDecl("c",ArrayType(5,IntType())),BinaryOp("=",ArrayCell(Id("c"),IntLiteral(2)),BinaryOp("+",Id("b"),BinaryOp("%",BinaryOp("*",Id("a"),IntLiteral(10)),ArrayCell(Id("c"),ArrayCell(Id("d"),ArrayCell(Id("e"),BinaryOp("+",BinaryOp("+",Id("t"),Id("m")),IntLiteral(5))))))))]))]))])

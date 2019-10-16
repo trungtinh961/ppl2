@@ -1,17 +1,7 @@
 
-            int gcd(int a, int b){
-                //  a = 0 => ucln(a,b) = b
-                //  b = 0 => ucln(a,b) = a
-                if (a == 0 || b == 0){
-                    return a + b;
-                }
-                do {
-                    if (a > b){
-                        a = a - b; // a = a - b
-                    }else{
-                        b = b - a;
-                    }
-                } while (a != b);
-                return a; // return a or b, 
+        int main(){
+            for(i = 0; i < 10; i=i+1) {
+                putIntLn("Hello world!\n");
             }
+        }    
         

@@ -1,1 +1,1 @@
-Program([VarDecl("b",ArrayType(10,IntType()))])
+Program([VarDecl("a",IntType()),VarDecl("b",ArrayType(10,IntType()))])

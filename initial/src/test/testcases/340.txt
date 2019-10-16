@@ -1,10 +1,6 @@
 
-            int main(){
-                {
-                    int a[1],c,d;
-                    string b[2],e,f;
-                    float c[3],awfeawef,awerer;
-                    boolean d[4],_;
-                }
-            }
+            int[] foo (int b[]){
+            int a [1];
+            if (b>c) return a;
+            else return b;
         

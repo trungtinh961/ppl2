@@ -1,1 +1,1 @@
-Program([])
+Program([FuncDecl(Id("main"),[],IntType(),Block([BinaryOp("=",IntLiteral(12),BinaryOp("&&",BinaryOp("+",BinaryOp("/",BinaryOp("*",IntLiteral(5),IntLiteral(9)),IntLiteral(10)),BinaryOp("%",IntLiteral(15),IntLiteral(8))),BinaryOp("<",IntLiteral(1),IntLiteral(10))))]))])

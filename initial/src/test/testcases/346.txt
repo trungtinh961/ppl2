@@ -1,19 +1,8 @@
 
-        int find_max(int a, int b, int c){
-                int max;
-                if (a>b)
-                    if (a>c) max=a;
-                    //else max=c;
-                
-                /*if (b>a)
-                    if (b>c) max=b;
-                    else max=c;*/
-
-                return max;
+        int main(){
+            do {
+                foo(5);
             }
-        /*
-            int main() ?!@#@!$$#^$%*&_12349875{
-                //gserg
-            }
-        */
+            while (a<5);
+        }    
         

@@ -1,21 +1,9 @@
 
-            int i ;
-             int f ( ) {
-             return 200;
-             }
-             void main ( ) {
-             int main ;
-             main = f ( ) ;
-             putIntLn ( main ) ;
-             {
-             int i ;
-             int main ;
-             int f ;
-             main = f = i = 100;
-             putIntLn ( i ) ;
-             putIntLn ( main ) ;
-             putIntLn ( f ) ;
-             }
-             putIntLn ( main ) ;
-             }
+        int main(){
+            for (i = 0; i < 10; i = i + 1) {
+                for (j = 10; j >= 0; j = j - 1) {
+                    if (i == j) putIntLn("i");
+                }
+            }
+        }    
         

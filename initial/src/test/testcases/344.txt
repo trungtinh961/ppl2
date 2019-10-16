@@ -1,8 +1,11 @@
 
-            int main(){}
-        /*
-            int main() {
-                
+        int main(){
+            do {
+                int a[2];
             }
-        */
+            {
+                a+b;
+            }
+            while (a<5);
+        }    
         

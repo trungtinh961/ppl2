@@ -1,14 +1,21 @@
 
-            int main() {
-                string s1[100];
+        int i;
+        int f() {
+            return 200;
+        }
+        void main () {
+            int main ;
+            main = f();
+            putIntLn (main);
+            {
                 int i;
-                i=0;
-                    
-                do {
-                    i=i+1;
-                } while(s1[i] != null);
-                
-                printf("Do dai cua chuoi '%s' la: %d", s1, i);
-                return 0;
+                int main;
+                int f;
+                main = f = i = 100;
+                putIntLn(i);
+                putIntLn(main);
+                putIntLn(f);
             }
+                putIntLn(main);
+        }    
         

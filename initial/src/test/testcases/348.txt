@@ -1,11 +1,7 @@
 
-            int gcd4(int a, int b) {
-                int tmp;
-                do {
-                    tmp = a % b;
-                    a = b;
-                    b = tmp;
-                } while(b != 0);
-                return a;
+        int main(){
+            for(i = 0; i < foo(2)[foo(4)[a+b+c]]; i = i + 1) {
+                putIntLn("Hello world!\n");
             }
+        }   
         

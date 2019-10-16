@@ -1,5 +1,6 @@
 
-            int main(){
-                a[a[a[foo(a)]]];
-            }
+            void foo ( ) {
+            if(a<b) return ; 
+            else return 2; 
+        }       
         

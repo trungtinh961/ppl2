@@ -1,9 +1,11 @@
 
-            int main(){}
-            //student name: khoa
-            /*
-                int main() {
-                    
-                }
-            */
+        int main(){
+            do {
+                int a[2];
+            }
+            {
+                a+b;
+            }
+            while a<5==9%7;
+        }    
         
