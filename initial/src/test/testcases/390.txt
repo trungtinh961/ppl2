@@ -1,6 +1,13 @@
 
-        int main(){
-            arr[((i))];
-            
+        int main() {
+        float percentage;
+        int total_marks; total_marks = 86;
+        int scored; scored = 50;
+
+        percentage = scored / total_marks * 100.0;
+
+        printf("Gia tri phan tram = %.2f%%", percentage);
+
+        return 0;
         }
         

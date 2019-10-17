@@ -1,0 +1,1 @@
+Program([FuncDecl(Id("main"),[],IntType(),Block([For(Id("a"),Id("a"),Id("a"),Return())]))])

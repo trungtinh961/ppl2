@@ -1,5 +1,16 @@
 
-        int main(){
-            arr [(arr[5])]; 
+        int main() {
+        int n,i,j;
+
+        n = 5;
+
+        printf("Ve tam giac sao vuong can:");
+        for(i = 1; i <= n; i=i+1) {
+            for(j = 1; j <= i; j=j+1)
+                printf("* ");
+
+            printf("\n");
         }
+        return 0;
+        }    
         

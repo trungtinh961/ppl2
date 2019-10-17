@@ -1,8 +1,11 @@
 
-        int foo(){
-            int value[3];
-            value[0] = 1;
-            value[1] = 2;
-            value[2] = value[value[0]];
+        boolean IsPrime(int number)
+        {
+            for (i = 2; i < number; i = i + 1)
+            {
+                if (number % i == 0 && i != number)
+                    return false;
+            }
+            return true;
         }
         

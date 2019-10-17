@@ -1,4 +1,15 @@
 
-        float main(float main, float main){}
-        int main() {}
+        int main() {
+        int loop;
+        int factorial;
+        int number;
+
+        for(loop = 1; loop<=number; loop = loop + 1) {
+            factorial = factorial * loop;
+        }
+
+        printf("Giai thua cua %d = %d \n", number, factorial);
+
+        return 0;
+        }
         

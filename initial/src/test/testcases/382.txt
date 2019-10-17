@@ -1,11 +1,24 @@
 
-        float test(){
-            int a[4],b[5],c[6],d;
-            {
-                a=2;
-                b=3;
-                c=4;
-                d=a+b+c;
-            }
+        int main() {
+        int i, num;
+        int result;
+
+        printf("Nhap mot so bat ky: ");
+        scanf("%d", num);
+
+        result = calculateSum(num);
+        printf("Tong cac so tu 1 toi %d la: %d", num, result);
+
+        return (0);
+        }
+
+        int calculateSum(int num) {
+        int res;
+        if (num == 1) {
+            return (1);
+        } else {
+            res = num + calculateSum(num - 1);
+        }
+        return (res);
         }
         

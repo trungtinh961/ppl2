@@ -1,11 +1,18 @@
 
-        void main(){
-            if ( a && b )
-            {
-                if( a || b ){a || b ;}
-                else
-                {}
+        int main() {
+            int a, b, c, i, n;
+            n = 6;
+            a = b = 1;
+            printf("In day Fibonacci:\n");
+            printf("%d %d ",a,b);
+            for(i = 1; i <= n-2; i = i + 1) {
+                c = a + b;
+                printf("%d ", c);
+                
+                a = b;
+                b = c;
             }
-            else{a && b ;}
+            
+            return 0;
         }
         

@@ -1,1 +1,1 @@
-Program([FuncDecl(Id("isFalse"),[VarDecl("a",BoolType())],BoolType(),Block([If(BinaryOp("==",Id("a"),BooleanLiteral("true")),Block([Return(BooleanLiteral("false"))]))]))])
+Program([FuncDecl(Id("isFalse"),[VarDecl("a",BoolType())],BoolType(),Block([If(BinaryOp("==",Id("a"),BooleanLiteral(True)),Block([Return(BooleanLiteral(False))]))]))])

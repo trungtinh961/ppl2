@@ -1,6 +1,22 @@
 
-        int a;
-        string str(int dfx){
-            int a;
+        void main()
+        {
+            int n;
+            float a, b, c ;
+            float R;
+            float P;
+            float S;
+            do
+            {
+                printf("Nhap ban kinh duong tron:");
+                scanf("%f", R);
+            }
+            while(R <= 0);
+            P = 2 * PI * R;
+            S = PI * R * R;
+            printf("Chu vi hinh tron : %f dvdd", P);
+            printf("Dien tich hinh tron : %f dvdt", S);
+            break;               
+            getch();
         }
         

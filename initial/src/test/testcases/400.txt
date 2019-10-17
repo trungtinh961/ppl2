@@ -1,6 +1,12 @@
 
-        void main(){
-            for (x; x< 0; x=x+1)
-                return exp;
+        void main()
+        {
+            float C;C = 0;
+            float F;
+            printf("Nhap vao nhiet do F = ");
+            scanf("%f", F);
+            C = 5*(F - 32)/9.0;
+            printf("Nhieu do Celcius = %f oC", C);
+            getch();
         }
         

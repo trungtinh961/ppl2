@@ -1,19 +1,5 @@
 
-        void foo() {
-            if (a == b)
-                if (c == d)
-                    if (e == f)
-                        if (a)
-                            if (b)
-                                if(c)
-                                    foo();
-                                else
-                                    a;
-                            else
-                                b;
-                        else 
-                            c;
-                    else 
-                        d;
-        }
+        int main() {
+            for(a;a;a) return;
+        }    
         

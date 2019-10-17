@@ -1,6 +1,5 @@
 
-        void main(string s[]) {
-           s= /* comment */b;
-           // int s[b];
+        int main() {
+            printf("Error char: ~`$^.@");
         }
         

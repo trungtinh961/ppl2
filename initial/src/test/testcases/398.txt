@@ -1,3 +1,24 @@
 
-        float exception(boolean a){}
+        void main()
+        {
+            int n;
+            float a, b, c ;
+            float R;
+            float P;
+            float S;
+            do
+            {
+                printf("Nhap chieu rong hcn: ");
+                scanf("%f", a);
+                printf("Nhap chieu dai hcn: ");
+                scanf("%f", b);
+            }
+            while(a < 0 || b < 0);
+            P = (a + b)*2;
+            S = a * b;
+            printf("Chu vi hinh vuong : %f dvdd", P);
+            printf("Dien tich hinh vuong: %f dvdt", S);
+            break;                
+            getch();
+        }
         

@@ -1,0 +1,1 @@
+Program([FuncDecl(Id("main"),[],IntType(),Block([If(BinaryOp("==",Id("a"),ArrayCell(Id("f"),IntLiteral(0))),CallExpr(Id("print"),[Id("a")]))]))])

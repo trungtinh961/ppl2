@@ -1,6 +1,5 @@
 
-        int a(){{{(a);}}}
-        int foo() {
-            
-        }
+        int main() {
+            if (a == f[0]) print(a);
+        }    
         

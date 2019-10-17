@@ -1,5 +1,8 @@
 
-        void func() {
-            a = ((((((((b))))))));
-        }
+        int main() {
+            if (a) 
+                do
+                    continue;
+                while b;
+        }    
         

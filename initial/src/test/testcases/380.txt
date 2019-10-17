@@ -1,4 +1,26 @@
 
-        int main(){
-            !a;
+        int main() {
+        int a, b, max, step, lcm;
+
+        a   = 3;
+        b   = 4;
+        lcm = 0;
+
+        if(a > b)
+            max = step = a;
+        else
+            max = step = b;
+
+        do {
+            if(max%a == 0 && max%b == 0) {
+                lcm = max;
+                break;    
+            }
+
+            max = max + step;
+        } while(1);
+
+        printf("BSCNN = %d", lcm);
+        return 0;
+        }
         

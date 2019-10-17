@@ -1,11 +1,13 @@
 
-        int main() { 
-            int i;
-            i = 20; 
-            if (i < 15) 
-                printf("i is smaller than 15"); 
-            else
-                printf("i is greater than 15");      
-            return 0;
+        int main() {
+        int year;
+        year = 2016;
+        
+        if (((year % 4 == 0) && (year % 100!= 0)) || (year%400 == 0))
+            printf("%d la mot nam nhuan", year);
+        else
+            printf("%d khong phai la nam nhuan", year);
+            
+        return 0;
         }
         

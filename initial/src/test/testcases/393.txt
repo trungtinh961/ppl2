@@ -1,3 +1,9 @@
 
-        boolean[] main(){}
+        int main() {
+        int n;n = 6;
+
+        printf("Gia tri lap phuong cua %d = %d", n, (n*n*n));
+
+        return 0;
+        }
         

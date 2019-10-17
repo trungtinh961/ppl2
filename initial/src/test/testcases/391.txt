@@ -1,5 +1,26 @@
 
-        int main(){
-            func(arr[num], arr[num + 1], arr[num + 2]);
+        int factorial(int n) {
+            int f;
+
+            for(f = 1; n > 1; n = n - 1)
+                f = f* n;
+
+            return f;
+        }
+
+        int npr(int n,int r) {
+            return factorial(n)/factorial(n-r);
+        }
+
+        int main() {
+            int n, r;
+
+            n = 4;
+            r = 3;
+            
+            printf("Tinh hoan vi:");
+            printf("%dp%d = %d \n", n, r, npr(n,r));
+
+            return 0;
         }
         

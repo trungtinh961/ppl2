@@ -1,9 +1,20 @@
 
-        void main(){
-            if ( a && b )
-                if( a || b )
-                    a || b ;
-            else
-                a && b ;
+        int main() {
+        int original[10];
+        int copied[10];
+        int loop;
+        
+        for(loop = 0; loop < 10; loop = loop+1) {
+            copied[loop] = original[loop];
+        }
+        printf("Sao chep mang trong C:");
+        printf("Mang ban dau -> Mang sao chep ");
+        
+        for(loop = 0; loop < 10; loop = loop+1) {
+            printf("    %2d          %2d\n", original[loop], copied[loop]);
+        }
+
+        
+        return 0;
         }
         

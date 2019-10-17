@@ -1,21 +1,14 @@
 
-        int i;
-        int f() {
-            return 200;
-        }
-        void main () {
-            int main ;
-            main = f() ;
-            putIntLn( main ) ;
-            {
-                int i ;
-                int main ;
-                int f ;
-                main = f = i = 100;
-                putIntLn( i ) ;
-                putIntLn( main ) ;
-                putIntLn ( f ) ;
-            }
-            putIntLn( main ) ;
+        int main() {
+        int array[10];
+        int loop, largest;
+        largest = array[0];        
+        printf("Chuong trinh tim phan tu lon nhat cua mang:\n\n"); 
+        for(loop = 1; loop < 10; loop = loop + 1) {
+            if( largest < array[loop] ) 
+                largest = array[loop];
+        }        
+        printf("Phan tu lon nhat cua mang la: %d", largest);       
+        return 0;
         }
         

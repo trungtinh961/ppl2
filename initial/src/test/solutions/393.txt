@@ -1,0 +1,1 @@
+Program([FuncDecl(Id("main"),[],IntType(),Block([VarDecl("n",IntType()),BinaryOp("=",Id("n"),IntLiteral(6)),CallExpr(Id("printf"),[StringLiteral("Gia tri lap phuong cua %d = %d"),Id("n"),BinaryOp("*",BinaryOp("*",Id("n"),Id("n")),Id("n"))]),Return(IntLiteral(0))]))])

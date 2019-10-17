@@ -1,3 +1,21 @@
 
-        float foo(int a, string str[], float f, boolean bool[]){}
+        int main() {
+        int arms;arms = 153; 
+        int check, rem,sum; sum = 0;
+
+        check = arms;
+
+        do {
+            rem = check % 10;
+            sum = sum + (rem * rem * rem);
+            check = check / 10;
+        }while(check != 0);
+
+        if(sum == arms) 
+            printf("So %d la mot so armstrong.", arms);
+        else 
+            printf("So %d khong phai la so armstrong.", arms);
+
+        return 0;
+        }
         

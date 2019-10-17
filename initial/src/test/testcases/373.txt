@@ -1,18 +1,10 @@
 
-        void main(){
-        do
-            {int a;}
-            a = 0;
-            a = a + 1;
-            do
-                {boolean b;}
-                b = true;
-                b = false; 
-                do
-                    do{}
-                    while b == 1;
-                while b != 1;
-            while a == 0;
-        while a != 0;
-        } 
+        int main() {
+        int array[10];
+        int loop;
+        printf("In tat ca phan tu cua mang: \n\n");
+        for(loop = 0; loop < 10; loop = loop + 1)
+            printf("%d ", array[loop]);            
+        return 0;
+        }
         

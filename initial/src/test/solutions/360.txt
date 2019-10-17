@@ -1,1 +1,1 @@
-Program([FuncDecl(Id("main"),[],IntType(),Block([BinaryOp("=",Id("a"),BooleanLiteral("false")),Dowhile([Block([If(Id("b"),Id("a")),Continue()])],UnaryOp("!",Id("a")))]))])
+Program([FuncDecl(Id("main"),[],IntType(),Block([BinaryOp("=",Id("a"),BooleanLiteral(False)),Dowhile([Block([If(Id("b"),Id("a")),Continue()])],UnaryOp("!",Id("a")))]))])

@@ -1,9 +1,22 @@
 
-        void main(){
-        do {
-            do {} while (a<0);
-            do {{{int i;}}} while b<0;
-        } {} {} {} {} do {{if(a){}}} while 5 == 0 ;
-        while 5 >= 10 ;
+        void main()
+        {
+            int n;
+            float a, b, c ;
+            float R;
+            float P;
+            float S;
+            do
+            {
+                printf("Nhap cac canh cua tam giac:");
+                scanf("%f %f %f", a, b, c);
+            }
+            while(a < 0 || b < 0 || c < 0 || (a + b) <= c || (a + c) <= b || (b + c) <= a);
+            P = (a + b + c);
+            S = sqrt(P*(P/2 - a)*(P/2 - b)*(P/2 - c)/2);
+            printf("Chu vi tam giac : %f dvdd", P);
+            printf("Dien tich tam giac : %f dvdt", S);
+            break;                
+            getch();
         }
         

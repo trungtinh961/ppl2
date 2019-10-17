@@ -1,9 +1,12 @@
 
-        int main(int argc){
-            int a;
-            { 
+        int main() {
+        int i;
 
-            }
-            return 0 + 0;
+        printf("In cac so le:\n");
+        for(i = 1; i <= 10; i=i+1) {
+            if(i%2 != 0)
+                printf("%d\n", i);
+        }
+        return 0;
         }
         

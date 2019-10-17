@@ -324,7 +324,7 @@ class BooleanLiteral(Literal):
         self.value = value
 
     def __str__(self):
-        return "BooleanLiteral(\"" + str(self.value).lower() + "\")"
+        return "BooleanLiteral(" + str(self.value).title() + ")"
 
     def accept(self, v, param):
         return v.visitBooleanLiteral(self, param)

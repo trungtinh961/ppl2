@@ -1,25 +1,24 @@
 
-        float test(int a,float b){
-            int a,b;
-            a=10;
+        int day_fibonaci(int i)
+        {
+        if(i == 0)
+        {
+            return 0;
+        }
+        if(i == 1)
+        {
+            return 1;
+        }
+        return day_fibonaci(i-1) + day_fibonaci(i-2);
+        }
+
+        int  main()
+        {
+            int i;
+            for (i = 0; i < 10; i=i+1)
             {
-                int a[5];
-            }
-            {
-                do 
-                    if (a=10) {
-                        if (a==2) {
-                            for (x;y;z) {
-                                for(a;b;c){
-                                    for (t;u;v) {
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                    } else break;
-                    a=a-1;
-                 while a>0;
-            }
+            printf("%d  %n", day_fibonaci(i));
+            }      
+            return 0;
         }
         
