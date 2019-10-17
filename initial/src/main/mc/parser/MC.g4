@@ -1,3 +1,8 @@
+/*  
+    ID: 1713521
+    Name: Nguyễn Trung Tính
+*/
+
 grammar MC;
 
 @lexer::header {
