@@ -1,3 +1,9 @@
 
-            
+        int main() {
+            a = false;
+            do {
+                if (b) a; 
+                continue;
+            } while !a;
+        }    
         

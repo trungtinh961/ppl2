@@ -1,3 +1,18 @@
 
-            
+        void main(){
+        do
+            {int a;}
+            a = 0;
+            a = a + 1;
+            do
+                {boolean b;}
+                b = true;
+                b = false; 
+                do
+                    do{}
+                    while b == 1;
+                while b != 1;
+            while a == 0;
+        while a != 0;
+        } 
         

@@ -1,3 +1,9 @@
 
-            
+        void main(){
+        do {
+            do {} while (a<0);
+            do {{{int i;}}} while b<0;
+        } {} {} {} {} do {{if(a){}}} while 5 == 0 ;
+        while 5 >= 10 ;
+        }
         

@@ -1,3 +1,4 @@
 
-            
+        float main(float main, float main){}
+        int main() {}
         

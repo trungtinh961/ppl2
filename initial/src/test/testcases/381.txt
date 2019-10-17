@@ -1,3 +1,25 @@
 
-            
+        float test(int a,float b){
+            int a,b;
+            a=10;
+            {
+                int a[5];
+            }
+            {
+                do 
+                    if (a=10) {
+                        if (a==2) {
+                            for (x;y;z) {
+                                for(a;b;c){
+                                    for (t;u;v) {
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    } else break;
+                    a=a-1;
+                 while a>0;
+            }
+        }
         

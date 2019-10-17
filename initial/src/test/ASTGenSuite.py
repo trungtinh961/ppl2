@@ -563,19 +563,27 @@ class ASTGenSuite(unittest.TestCase):
         expect = str(Program([FuncDecl(Id("main"),[],IntType(),Block([ArrayCell(Id("a"),IntLiteral(123))]))]))
         self.assertTrue(TestAST.checkASTGen(input,expect,358))
 
-    # def test_all_6(self):        
-    #     input = """
-            
-    #     """
-    #     expect = str(Program([]))
-    #     self.assertTrue(TestAST.checkASTGen(input,expect,359))
+    def test_all_6(self):        
+        input = """
+        int main() {
+            (-12.25e-12);
+        }   
+        """
+        expect = str(Program([FuncDecl(Id("main"),[],IntType(),Block([UnaryOp("-",FloatLiteral(1.225e-11))]))]))
+        self.assertTrue(TestAST.checkASTGen(input,expect,359))
 
-    # def test_all_7(self):        
-    #     input = """
-            
-    #     """
-    #     expect = str(Program([]))
-    #     self.assertTrue(TestAST.checkASTGen(input,expect,360))
+    def test_all_7(self):        
+        input = """
+        int main() {
+            a = false;
+            do {
+                if (b) a; 
+                continue;
+            } while !a;
+        }    
+        """
+        expect = str(Program([FuncDecl(Id("main"),[],IntType(),Block([BinaryOp("=",Id("a"),BooleanLiteral(False)),Dowhile([Block([If(Id("b"),Id("a")),Continue()])],UnaryOp("!",Id("a")))]))]))
+        self.assertTrue(TestAST.checkASTGen(input,expect,360))
 
     # def test_all_8(self):        
     #     input = """

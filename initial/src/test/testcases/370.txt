@@ -1,3 +1,6 @@
 
-            
+        void main(string s[]) {
+           s= /* comment */b;
+           // int s[b];
+        }
         
